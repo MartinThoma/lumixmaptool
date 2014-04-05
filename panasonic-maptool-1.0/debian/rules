@@ -1,0 +1,68 @@
+#!/usr/bin/make -f
+
+icon = $(CURDIR)/maptool-icon.png
+script = $(CURDIR)/maptool.py
+launcher = $(CURDIR)/maptool.desktop
+
+DEST1 = $(CURDIR)/debian/maptool/usr/share/maptool
+DEST2 = $(CURDIR)/debian/maptool/usr/share/applications
+
+build: build-stamp
+
+build-stamp:
+	dh_testdir
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp
+	dh_clean
+
+install: build clean $(icon) $(script) $(launcher)
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+
+	mkdir -m 755 -p $(DEST1)
+	mkdir -m 755 -p $(DEST2)
+
+	install -m 666 $(icon) $(DEST1)
+	install -m 777 $(script) $(DEST1)
+	install -m 777 $(launcher) $(DEST2)
+
+# Build architecture-independent files here.
+binary-indep: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs
+	dh_installdocs
+	dh_installexamples
+#	dh_installmenu
+#	dh_installdebconf
+#	dh_installlogrotate
+#	dh_installemacsen
+#	dh_installpam
+#	dh_installmime
+#	dh_installinit
+#	dh_installcron
+#	dh_installman
+#	dh_installinfo
+#	dh_undocumented
+	dh_installman
+	dh_link
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+#	dh_perl
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+# Build architecture-dependent files here.
+binary-arch: build install
+# We have nothing to do by default.
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install
