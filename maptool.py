@@ -73,7 +73,10 @@ def copy_maps(path_to_mapdata, path_to_sdcard, regions):
     """Copy map information of regions to sdcard."""
     mapdata_cd_folder = '/'.join(path_to_mapdata.split("/")[:-1])
     logging.info("mapdata_cd_folder: %s" % mapdata_cd_folder)
-    mapdata_on_sdcard = path_to_sdcard + "/PRIVATE/MAP_DATA"
+    #mapdata_on_sdcard = path_to_sdcard + "/PRIVATE/MAP_DATA"
+    
+    # This works with Panasonic Lumix DMC TZ-41
+    mapdata_on_sdcard = path_to_sdcard + "PRIVATE/PANA_GRP/PAVC/LUMIX/MAP_DATA"
     if not os.path.exists(mapdata_on_sdcard):
         os.makedirs(mapdata_on_sdcard)
     mapdata = parse_mapdata(path_to_mapdata)
