@@ -76,13 +76,14 @@ def copy_maps(path_to_mapdata, path_to_sdcard, regions):
     #mapdata_on_sdcard = path_to_sdcard + "/PRIVATE/MAP_DATA"
     
     # This works with Panasonic Lumix DMC TZ-41
-    mapdata_on_sdcard = path_to_sdcard + "PRIVATE/PANA_GRP/PAVC/LUMIX/MAP_DATA"
+    mapdata_on_sdcard = os.path.join(path_to_sdcard, "PRIVATE/PANA_GRP/PAVC/LUMIX/MAP_DATA")
     if not os.path.exists(mapdata_on_sdcard):
         os.makedirs(mapdata_on_sdcard)
     mapdata = parse_mapdata(path_to_mapdata)
 
     # Delete previously stored cards
     shutil.rmtree(mapdata_on_sdcard, ignore_errors=True)
+
     # And create the directory again
     os.makedirs(mapdata_on_sdcard)
 
@@ -112,12 +113,25 @@ class UniqueAppendAction(Action):
         unique_values = set(values)
         setattr(namespace, self.dest, unique_values)
 
+def autodetect_mapdata():
+    """Try to find the DVD with map data."""
+    path = "/media"
+    subdir = [f for f in os.listdir(path) if os.path.isdir(os.path.join(path, f))]
+    while len(subdir) == 1:
+        path = os.path.join(path, subdir[0])
+        subdir = [f for f in os.listdir(path) if os.path.isdir(os.path.join(path, f))]
+
+    if "MAP_DATA" in subdir:
+        path = path = os.path.join(path, "MAP_DATA/MapList.dat")
+        return path
+    return ""
+
 if __name__ == "__main__":
     parser = ArgumentParser(description=__doc__, formatter_class=RawTextHelpFormatter)
 
     # Add more options if you like
     parser.add_argument("-m", "--mapdata", dest="mapdata", metavar="MAPDATA",
-                    required=True,
+                    default=autodetect_mapdata(),
                     help="path to MAPDATA folder on the Lumix DVD",
                     type=lambda x: is_valid_mapdata(parser, x))
     parser.add_argument("-s", "--sdcard", dest="path_to_sdcard", metavar="SDCARD",
@@ -130,7 +144,6 @@ if __name__ == "__main__":
                     help="The space-separated indices of the regions to copy. " \
                     + "E.g. 1 6 10. At least one region needs to be given. " \
                     + "Regions are:\n" \
-                    + map(lambda i: "%i -\t%s" % (i, region_mapping[i]), range(1,11)))
-
+                    + "\n".join(list(map(lambda i: "%i -\t%s" % (i, region_mapping[i]), range(1,11)))))
     args = parser.parse_args()
     copy_maps(args.mapdata, args.path_to_sdcard, args.regions)
