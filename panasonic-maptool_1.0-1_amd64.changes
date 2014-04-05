@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Sat, 05 Apr 2014 22:42:27 +0200
+Source: panasonic-maptool
+Binary: panasonic-maptool
+Architecture: source amd64
+Version: 1.0-1
+Distribution: unstable
+Urgency: low
+Maintainer: Martin Thoma <info@martin-thoma.de>
+Changed-By: Martin Thoma <info@martin-thoma.de>
+Description: 
+ panasonic-maptool - Manage GPS information for Panasonic Lumix cameras.
+Changes: 
+ panasonic-maptool (1.0-1) unstable; urgency=low
+ .
+   * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+Checksums-Sha1: 
+ fe6435fe3dbe7fde7bbc39960eb2f2911b903d21 897 panasonic-maptool_1.0-1.dsc
+ 34c6ab3b0e5fa61db2940979488bdbb188c96b87 14533 panasonic-maptool_1.0.orig.tar.gz
+ cbe126857c367b4efc28a3dd8b3b027b9f13ffff 2083 panasonic-maptool_1.0-1.debian.tar.gz
+ 94cb8511986e984c44bf84a611e2f8c2bdc18080 2094 panasonic-maptool_1.0-1_amd64.deb
+Checksums-Sha256: 
+ 5cb96bff0b7562289a31f9565cada9529a5a864eb4dd2c43dee572ffaabb8002 897 panasonic-maptool_1.0-1.dsc
+ d656265a0443f7b4695420e35464459735ab7fba93a34f7c3dda353b6bb77968 14533 panasonic-maptool_1.0.orig.tar.gz
+ 1876e6ba236c484cb0d088efc53d208064cc62c5eb1d216acd202d9871adbd1f 2083 panasonic-maptool_1.0-1.debian.tar.gz
+ 0b2fb79f0119fa7cbf38802cdef0a7302ad7c69117282724fcaf9b1759c804ac 2094 panasonic-maptool_1.0-1_amd64.deb
+Files: 
+ 252fdc9e4f250840484eb4871a99a372 897 admin extra panasonic-maptool_1.0-1.dsc
+ 661b9bbc083b0d7b412fdc162399bf5f 14533 admin extra panasonic-maptool_1.0.orig.tar.gz
+ bc91a2209954be206258571467108c91 2083 admin extra panasonic-maptool_1.0-1.debian.tar.gz
+ b576a81539f10fa6de4e2d0e09bce2e7 2094 admin extra panasonic-maptool_1.0-1_amd64.deb
