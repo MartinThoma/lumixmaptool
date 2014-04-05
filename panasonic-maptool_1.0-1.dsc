@@ -11,10 +11,10 @@ Package-List:
  panasonic-maptool deb admin extra
 Checksums-Sha1: 
  34c6ab3b0e5fa61db2940979488bdbb188c96b87 14533 panasonic-maptool_1.0.orig.tar.gz
- cbe126857c367b4efc28a3dd8b3b027b9f13ffff 2083 panasonic-maptool_1.0-1.debian.tar.gz
+ 691310da62cc41d1a47b886778cd503b93138a49 2076 panasonic-maptool_1.0-1.debian.tar.gz
 Checksums-Sha256: 
  d656265a0443f7b4695420e35464459735ab7fba93a34f7c3dda353b6bb77968 14533 panasonic-maptool_1.0.orig.tar.gz
- 1876e6ba236c484cb0d088efc53d208064cc62c5eb1d216acd202d9871adbd1f 2083 panasonic-maptool_1.0-1.debian.tar.gz
+ 4928d1cceca019c66eac53ab462eada79b6311ba869c71708bbad6e7d339d2eb 2076 panasonic-maptool_1.0-1.debian.tar.gz
 Files: 
  661b9bbc083b0d7b412fdc162399bf5f 14533 panasonic-maptool_1.0.orig.tar.gz
- bc91a2209954be206258571467108c91 2083 panasonic-maptool_1.0-1.debian.tar.gz
+ 5c8030d371faf28647d77da5627b8c72 2076 panasonic-maptool_1.0-1.debian.tar.gz
