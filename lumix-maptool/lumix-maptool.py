@@ -3,7 +3,7 @@
 """
 Author: Martin Thoma <info@martin-thoma.de>,
         based on https://github.com/RolandKluge/de.rolandkluge.lumix_map_tool/
-        from Roland Kluge
+        from Roland Kluge.
         
 Manage GPS information for Panasonic Lumix cameras.
 
@@ -19,9 +19,11 @@ import re
 from pyparsing import Word, alphas, nums, OneOrMore, alphanums
 import shutil
 import logging
-logging.basicConfig(filename='maptool.log', level=logging.DEBUG, format='%(asctime)s %(message)s')
 
-__version__ = "1.0"
+logfile = os.path.join(os.path.expanduser("~"), 'maptool.log')
+logging.basicConfig(filename=logfile, level=logging.INFO, format='%(asctime)s %(message)s')
+
+__version__ = "1.0.4"
 
 region_mapping = {}
 region_mapping[1] = 'Japan'
@@ -40,7 +42,10 @@ def is_valid_mapdata(parser, path_to_mapdata):
     if os.path.isfile(path_to_mapdata):
         return path_to_mapdata
     else:
-        parser.error("The file '%s' does not exist." % path_to_mapdata)
+        if path_to_mapdata == '':
+            parser.error("You have to specify the path to the mapdata file (it's on a DVD).")
+        else:
+            parser.error("The file '%s' does not exist." % path_to_mapdata)
 
 def is_valid_sdcard(parser, path_to_sdcard):
     """Check if sdcard is a valid path."""
