@@ -2,8 +2,8 @@
 Version=1.0
 Type=Application
 Terminal=false
-Exec=/usr/share/applications/maptool.py
-Name=maptool
+Exec=/usr/share/applications/lumix-maptool.py
+Name=lumix-maptool
 Comment=Manage GPS information for Panasonic Lumix cameras.
-Icon=/usr/share/maptool/maptool-icon.png
+Icon=/usr/share/maptool/lumix-maptool-icon.png
 Categories=Utility;Camera
