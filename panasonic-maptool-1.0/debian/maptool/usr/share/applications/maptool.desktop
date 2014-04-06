@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Terminal=false
-Exec=/usr/share/applications/maptool.py
-Name=maptool
-Comment=Manage GPS information for Panasonic Lumix cameras.
-Icon=/usr/share/maptool/maptool-icon.png
-Categories=Utility;Camera
