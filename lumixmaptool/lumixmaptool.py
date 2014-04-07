@@ -23,7 +23,7 @@ import logging
 logfile = os.path.join(os.path.expanduser("~"), 'maptool.log')
 logging.basicConfig(filename=logfile, level=logging.INFO, format='%(asctime)s %(message)s')
 
-__version__ = "1.0.4"
+__version__ = "1.0.8"
 
 region_mapping = {}
 region_mapping[1] = 'Japan'
@@ -136,7 +136,7 @@ def autodetect_mapdata():
         return path
     return ""
 
-if __name__ == "__main__":
+def main():
     parser = ArgumentParser(description=__doc__, formatter_class=RawTextHelpFormatter)
 
     # Add more options if you like
@@ -158,3 +158,6 @@ if __name__ == "__main__":
     parser.add_argument('--version', action='version', version='%(prog)s ' + __version__)
     args = parser.parse_args()
     copy_maps(args.mapdata, args.path_to_sdcard, args.regions)
+
+if __name__ == "__main__":
+    main()

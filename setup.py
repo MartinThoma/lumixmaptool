@@ -2,11 +2,11 @@ from setuptools import setup
 
 setup(
     name='LumixMaptool',
-    version='1.0.4',
+    version='1.0.8',
     author='Martin Thoma',
     author_email='info@martin-thoma.de',
-    packages=['lumix-maptool'],
-    scripts=['lumix-maptool/lumix-maptool.py'],
+    packages=['lumixmaptool'],
+    scripts=['lumixmaptool/lumixmaptool.py'],
     url='http://pypi.python.org/pypi/LumixMaptool/',
     license='LICENSE',
     description='Manage GPS information for Panasonic Lumix cameras.',
