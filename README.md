@@ -1,7 +1,13 @@
 LumixMaptool
 ==============
 
-System independant map managment tool for Lumix Digital Cameras (especially Lumix TZ41).
+Manage GPS information for Panasonic Lumix cameras.
+
+Panasonic offers GPS metadata to add to a SD card. This metadata can contain
+tourist information that might be useful for sightseeing. This maptool helps
+to copy the data from Lumix DVD to the SD card that is inserted into your
+computer (the camera has not to be connected).
+This script was tested with Lumix TZ41.
 
 ## Credits
 This script is based on [de.rolandkluge.lumix_map_tool](https://github.com/RolandKluge/de.rolandkluge.lumix_map_tool/blob/master/maptool.py) (see also [his article](http://blog.roland-kluge.de/?p=250))
