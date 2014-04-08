@@ -15,6 +15,7 @@ This script was tested with Lumix TZ41.
 """
 
 import os
+import sys
 import re
 import shutil
 import logging
@@ -25,7 +26,7 @@ logfile = os.path.join(os.path.expanduser("~"), 'maptool.log')
 logging.basicConfig(filename=logfile, level=logging.INFO,
                     format='%(asctime)s %(message)s')
 
-__version__ = "1.0.10"
+__version__ = "1.0.11"
 
 region_mapping = {
     1: 'Japan',
