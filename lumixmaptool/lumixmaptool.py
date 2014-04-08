@@ -25,19 +25,20 @@ logfile = os.path.join(os.path.expanduser("~"), 'maptool.log')
 logging.basicConfig(filename=logfile, level=logging.INFO,
                     format='%(asctime)s %(message)s')
 
-__version__ = "1.0.9"
+__version__ = "1.0.10"
 
-region_mapping = {}
-region_mapping[1] = 'Japan'
-region_mapping[2] = 'South Asia, Southeast Asia'
-region_mapping[3] = 'Oceania'
-region_mapping[4] = 'North America, Central America'
-region_mapping[5] = 'South America'
-region_mapping[6] = 'Northern Europe'
-region_mapping[7] = 'Eastern Europe'
-region_mapping[8] = 'Western Europe'
-region_mapping[9] = 'West Asia, Africa'
-region_mapping[10] = 'Russia, North Asia'
+region_mapping = {
+    1: 'Japan',
+    2: 'South Asia, Southeast Asia',
+    3: 'Oceania',
+    4: 'North America, Central America',
+    5: 'South America',
+    6: 'Northern Europe',
+    7: 'Eastern Europe',
+    8: 'Western Europe',
+    9: 'West Asia, Africa',
+    10: 'Russia, North Asia'
+}
 
 
 def is_valid_mapdata(parser, path_to_mapdata):
@@ -65,24 +66,32 @@ def is_valid_sdcard(parser, path_to_sdcard):
 def parse_mapdata(path_to_mapdata):
     with open(path_to_mapdata, 'r') as f:
         mapdata = f.read()
-    mapdata_pattern = re.compile("\s*(\d{8})\s*(\d{8})\s*(.*)\s*", re.DOTALL)
+    mapdata_pattern = re.compile("(\d{8})\s*(\d{8})\s*(.*)", re.DOTALL)
     num1, num2, data = mapdata_pattern.findall(mapdata)[0]
+    match = re.search(mapdata_pattern, mapdata)
+    if not match:
+        print("An error occured.")
+        print("The file '%s' was not well-formed." % path_to_mapdata)
+        sys.exit()
+    num1, num2, data = match.groups()
+    logging.debug("num1: %s" % num1)
+    logging.debug("num2: %s" % num2)
+    logging.debug("data: %s" % data)
 
     parsed_map_data = {'num1': num1, 'num2': num2, 'regions': {}}
 
     def regionParsing(x):
         parsed_map_data['regions'][int(x[0])] = x[1:]
 
-    regionnum = Word(nums, exact=2).setResultsName("region-number")
-    regionnum = regionnum.setName("region-number")
-    filename = Word(alphanums + "/.").setResultsName("filename")
-    filename = filename.setName("filename")
-    regiondata = Word("{").suppress() + OneOrMore(filename)
-    regiondata += Word("}").suppress()
-    regiondata = regiondata.setResultsName("region-data")
-    regiondata += regiondata.setName("region-data")
-    region = (regionnum + regiondata).setResultsName("region")
-    region = region.setName("region")
+    def named(name, rule):
+        return rule.setResultsName(name).setName(name)
+
+    regionnum = named("region-number", Word(nums, exact=2))
+    filename = named("filename", Word(alphanums + "/."))
+    tmp = Word("{").suppress() + OneOrMore(filename) + Word("}").suppress()
+    regiondata = named("region-data", tmp)
+    region = named("region", (regionnum + regiondata))
+
     region.setParseAction(regionParsing)
     map_grammar = OneOrMore(region)
 
@@ -101,9 +110,11 @@ def copy_maps(path_to_mapdata, path_to_sdcard, regions):
     # This works with Panasonic Lumix DMC TZ-41
     mapdata_on_sdcard = os.path.join(path_to_sdcard,
                                      "PRIVATE/PANA_GRP/PAVC/LUMIX/MAP_DATA")
+    logging.info("mapdata_on_sdcard: %s" % mapdata_on_sdcard)
     if not os.path.exists(mapdata_on_sdcard):
         os.makedirs(mapdata_on_sdcard)
     mapdata = parse_mapdata(path_to_mapdata)
+    logging.info("mapdata: %s" % mapdata)
 
     # Delete previously stored cards
     shutil.rmtree(mapdata_on_sdcard, ignore_errors=True)
@@ -161,26 +172,36 @@ def main():
                             formatter_class=RawTextHelpFormatter)
 
     # Add more options if you like
-    parser.add_argument("-m", "--mapdata", dest="mapdata", metavar="MAPDATA",
+    parser.add_argument("-m", "--mapdata",
+                        dest="mapdata",
+                        metavar="MAPDATA",
                         default=autodetect_mapdata(),
                         help="path to MAPDATA folder on the Lumix DVD",
                         type=lambda x: is_valid_mapdata(parser, x))
-    parser.add_argument("-s", "--sdcard", dest="path_to_sdcard",
-                        metavar="SDCARD", required=True,
+    parser.add_argument("-s", "--sdcard",
+                        dest="path_to_sdcard",
+                        metavar="SDCARD",
+                        required=True,
                         help="path to SDCARD",
                         type=lambda x: is_valid_sdcard(parser, x))
 
     helptext = "The space-separated indices of the regions to copy. "
     helptext += "E.g. 1 6 10. At least one region needs to be given. "
     helptext += "Regions are:\n"
-    tmp = map(lambda i: "%i -\t%s" % (i, region_mapping[i]), range(1, 11))
+    tmp = map(lambda i: "%i -\t%s" % (i, region_mapping[i]),
+              region_mapping.keys())
     helptext += "\n".join(list(tmp))
-    parser.add_argument("-r", "--regions", dest="regions", nargs='+',
-                        required=True, choices=list(range(1, 11)), type=int,
+    parser.add_argument("-r", "--regions",
+                        dest="regions",
+                        nargs='+',
+                        required=True,
+                        choices=list(range(1, 11)),
+                        type=int,
                         action=UniqueAppendAction,
                         help=helptext)
-    parser.add_argument('--version', action='version', version='%(prog)s '
-                        + __version__)
+    parser.add_argument('--version',
+                        action='version',
+                        version='%(prog)s ' + __version__)
     args = parser.parse_args()
     copy_maps(args.mapdata, args.path_to_sdcard, args.regions)
 

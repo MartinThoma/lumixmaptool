@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='LumixMaptool',
-    version='1.0.9',
+    version='1.0.10',
     author='Martin Thoma',
     author_email='info@martin-thoma.de',
     packages=['lumixmaptool'],
