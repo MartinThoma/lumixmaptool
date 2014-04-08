@@ -26,7 +26,7 @@ logfile = os.path.join(os.path.expanduser("~"), 'maptool.log')
 logging.basicConfig(filename=logfile, level=logging.INFO,
                     format='%(asctime)s %(message)s')
 
-__version__ = "1.0.12"
+__version__ = "1.0.13"
 
 region_mapping = {
     1: 'Japan',
@@ -65,6 +65,11 @@ def is_valid_sdcard(parser, path_to_sdcard):
 
 
 def parse_mapdata(path_to_mapdata):
+    """Parse mapdata file into a dictionary that has three values:
+        num1 (a magic number), num2 (a magic number) and regions which
+        itself is a dictionary that contains region numbers as keys and
+        the files as a list.
+    """
     with open(path_to_mapdata, 'r') as f:
         mapdata = f.read()
     mapdata_pattern = re.compile("(\d{8})\s*(\d{8})\s*(.*)", re.DOTALL)

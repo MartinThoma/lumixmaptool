@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='LumixMaptool',
-    version='1.0.12',
+    version='1.0.13',
     author='Martin Thoma',
     author_email='info@martin-thoma.de',
     packages=['lumixmaptool'],
@@ -21,5 +21,16 @@ inserted into your computer (the camera has not to be connected).""",
     ],
     entry_points={
         'console_scripts': ['lumixmaptool = lumixmaptool:main']
-    }
+    },
+    keywords=['Lumix', 'Panasonic', 'TZ41', 'Camera', 'GPS'],
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Environment :: Console',
+        'Intended Audience :: End Users/Desktop',
+        'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
+        'Operating System :: POSIX :: Linux',
+        'Programming Language :: Python',
+        'Topic :: Utilities'
+    ],
 )
