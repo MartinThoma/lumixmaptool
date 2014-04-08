@@ -9,6 +9,20 @@ to copy the data from Lumix DVD to the SD card that is inserted into your
 computer (the camera has not to be connected).
 This script was tested with Lumix TZ41.
 
+## Usage
+
+Install it:
+
+```bash
+pip install LumixMaptool
+```
+
+use it
+
+```bash
+lumixmaptool
+```
+
 ## Credits
 This script is based on [de.rolandkluge.lumix_map_tool](https://github.com/RolandKluge/de.rolandkluge.lumix_map_tool/blob/master/maptool.py) (see also [his article](http://blog.roland-kluge.de/?p=250))
 
