@@ -26,7 +26,7 @@ logfile = os.path.join(os.path.expanduser("~"), 'maptool.log')
 logging.basicConfig(filename=logfile, level=logging.INFO,
                     format='%(asctime)s %(message)s')
 
-__version__ = "1.0.11"
+__version__ = "1.0.12"
 
 region_mapping = {
     1: 'Japan',
