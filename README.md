@@ -14,7 +14,7 @@ This script was tested with Lumix TZ41.
 Install it:
 
 ```bash
-pip install LumixMaptool
+sudo pip install LumixMaptool
 ```
 
 use it
