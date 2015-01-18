@@ -4,7 +4,7 @@ except ImportError:
     from distutils.core import setup
 
 config = {
-    'name': 'LumixMaptool',
+    'name': 'lumixmaptool',
     'version': '1.0.15',
     'author': 'Martin Thoma',
     'author_email': 'info@martin-thoma.de',

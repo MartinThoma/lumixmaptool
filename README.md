@@ -1,10 +1,10 @@
 [![Build Status](https://travis-ci.org/MartinThoma/lumixmaptool.svg?branch=master)](https://travis-ci.org/MartinThoma/lumixmaptool)
 [![Coverage Status](https://img.shields.io/coveralls/MartinThoma/lumixmaptool.svg)](https://coveralls.io/r/MartinThoma/lumixmaptool?branch=master)
-[![Documentation Status](http://img.shields.io/badge/docs-latest-brightgreen.svg)](https://pythonhosted.org/LumixMaptool/)
+[![Documentation Status](http://img.shields.io/badge/docs-latest-brightgreen.svg)](https://pythonhosted.org/lumixmaptool/)
 [![Code Health](https://landscape.io/github/MartinThoma/lumixmaptool/master/landscape.svg)](https://landscape.io/github/MartinThoma/lumixmaptool/master)
 
-LumixMaptool
-==============
+lumixmaptool
+============
 
 Manage GPS information for Panasonic Lumix cameras.
 
@@ -19,7 +19,7 @@ This script was tested with Lumix TZ41.
 Install it:
 
 ```bash
-sudo pip install LumixMaptool
+sudo pip install lumixmaptool
 ```
 
 use it
@@ -35,7 +35,7 @@ This script is based on [de.rolandkluge.lumix_map_tool](https://github.com/Rolan
 
 ### Python packages
 
-Register the project at PyPI: [LumixMaptool](https://pypi.python.org/pypi/LumixMaptool)
+Register the project at PyPI: [lumixmaptool](https://pypi.python.org/pypi/lumixmaptool)
 
 ```bash
 python setup.py register
