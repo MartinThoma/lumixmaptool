@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/MartinThoma/lumix_map_tool.svg?branch=master)](https://travis-ci.org/MartinThoma/lumix_map_tool)
+[![Coverage Status](https://img.shields.io/coveralls/MartinThoma/lumix_map_tool.svg)](https://coveralls.io/r/MartinThoma/lumix_map_tool?branch=master)
+[![Documentation Status](http://img.shields.io/badge/docs-latest-brightgreen.svg)](http://pythonhosted.org/lumix_map_tool)
+[![Code Health](https://landscape.io/github/MartinThoma/lumix_map_tool/master/landscape.svg)](https://landscape.io/github/MartinThoma/lumix_map_tool/master)
+
 LumixMaptool
 ==============
 

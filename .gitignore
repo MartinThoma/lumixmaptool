@@ -36,3 +36,20 @@ nosetests.xml
 .pydevproject
 
 *.log
+
+# Coveralls
+.coveralls.yml
+
+# Nosetests
+cover/
+
+# aspell
+*.bak
+
+# Prevent accidential uploads - some might sometimes be added
+*.hdf5
+*.csv
+*.json
+*.yml
+*.tar
+*.gz

@@ -19,12 +19,10 @@ import sys
 import re
 import shutil
 import logging
-from argparse import ArgumentParser, RawTextHelpFormatter, Action
+from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter, Action
 from pyparsing import Word, nums, OneOrMore, alphanums
 
 logfile = os.path.join(os.path.expanduser("~"), 'maptool.log')
-logging.basicConfig(filename=logfile, level=logging.INFO,
-                    format='%(asctime)s %(message)s')
 
 __version__ = "1.0.13"
 
@@ -173,9 +171,14 @@ def autodetect_mapdata():
     return ""
 
 
-def main():
+def main(mapdata, path_to_sdcard, regions):
+    copy_maps(mapdata, path_to_sdcard, regions)
+
+
+def get_parser():
+    """Return the parser object for this script."""
     parser = ArgumentParser(description=__doc__,
-                            formatter_class=RawTextHelpFormatter)
+                            formatter_class=ArgumentDefaultsHelpFormatter)
 
     # Add more options if you like
     parser.add_argument("-m", "--mapdata",
@@ -208,8 +211,8 @@ def main():
     parser.add_argument('--version',
                         action='version',
                         version='%(prog)s ' + __version__)
-    args = parser.parse_args()
-    copy_maps(args.mapdata, args.path_to_sdcard, args.regions)
+    return parser
 
 if __name__ == "__main__":
-    main()
+    args = get_parser().parse_args()
+    main(args.mapdata, args.path_to_sdcard, args.regions)
