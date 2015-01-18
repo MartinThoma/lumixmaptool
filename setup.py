@@ -13,7 +13,7 @@ config = {
     'packages': ['lumixmaptool'],
     'scripts': ['bin/lumixmaptool'],
     'platforms': ['Linux', 'MacOS X', 'Windows'],
-    'url': 'https://github.com/MartinThoma/lumix_map_tool',
+    'url': 'https://github.com/MartinThoma/lumixmaptool',
     'license': 'MIT',
     'description': 'Manage GPS information for Panasonic Lumix cameras.',
     'long_description': ("Panasonic offers GPS metadata to add to a SD card. "

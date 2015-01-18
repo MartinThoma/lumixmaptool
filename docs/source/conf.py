@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# lumix_map_tool documentation build configuration file, created by
+# lumixmaptool documentation build configuration file, created by
 # sphinx-quickstart on Sun Jan 18 11:56:56 2015.
 #
 # This file is execfile()d with the current directory set to its
@@ -49,7 +49,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'lumix_map_tool'
+project = u'lumixmaptool'
 copyright = u'2015, Martin Thoma'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -182,7 +182,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'lumix_map_tooldoc'
+htmlhelp_basename = 'lumixmaptooldoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -202,7 +202,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'lumix_map_tool.tex', u'lumix\\_map\\_tool Documentation',
+  ('index', 'lumixmaptool.tex', u'lumixmaptool Documentation',
    u'Martin Thoma', 'manual'),
 ]
 
@@ -232,7 +232,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'lumix_map_tool', u'lumix_map_tool Documentation',
+    ('index', 'lumixmaptool', u'lumixmaptool Documentation',
      [u'Martin Thoma'], 1)
 ]
 
@@ -246,8 +246,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'lumix_map_tool', u'lumix_map_tool Documentation',
-   u'Martin Thoma', 'lumix_map_tool', 'One line description of project.',
+  ('index', 'lumixmaptool', u'lumixmaptool Documentation',
+   u'Martin Thoma', 'lumixmaptool', 'One line description of project.',
    'Miscellaneous'),
 ]
 

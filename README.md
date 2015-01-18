@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/MartinThoma/lumix_map_tool.svg?branch=master)](https://travis-ci.org/MartinThoma/lumix_map_tool)
-[![Coverage Status](https://img.shields.io/coveralls/MartinThoma/lumix_map_tool.svg)](https://coveralls.io/r/MartinThoma/lumix_map_tool?branch=master)
+[![Build Status](https://travis-ci.org/MartinThoma/lumixmaptool.svg?branch=master)](https://travis-ci.org/MartinThoma/lumixmaptool)
+[![Coverage Status](https://img.shields.io/coveralls/MartinThoma/lumixmaptool.svg)](https://coveralls.io/r/MartinThoma/lumixmaptool?branch=master)
 [![Documentation Status](http://img.shields.io/badge/docs-latest-brightgreen.svg)](https://pythonhosted.org/LumixMaptool/)
-[![Code Health](https://landscape.io/github/MartinThoma/lumix_map_tool/master/landscape.svg)](https://landscape.io/github/MartinThoma/lumix_map_tool/master)
+[![Code Health](https://landscape.io/github/MartinThoma/lumixmaptool/master/landscape.svg)](https://landscape.io/github/MartinThoma/lumixmaptool/master)
 
 LumixMaptool
 ==============
@@ -51,6 +51,6 @@ python setup.py sdist upload
 
 (Does not work by now)
 
-lumix_map_tool/panasonic-maptool-1.0$ fakeroot dpkg-buildpackage -F
+lumixmaptool/panasonic-maptool-1.0$ fakeroot dpkg-buildpackage -F
 
 Check results with `lintian`.
