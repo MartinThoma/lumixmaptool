@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to lumix_map_tool's documentation!
+Welcome to lumixmaptool's documentation!
 ==========================================
 
 Contents:
@@ -11,6 +11,8 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   installation
+   development
 
 
 Indices and tables
