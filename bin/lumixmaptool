@@ -1,0 +1,56 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+"""
+Manage GPS information for Panasonic Lumix cameras.
+
+Panasonic offers GPS metadata to add to a SD card. This metadata can contain
+tourist information that might be useful for sightseeing. This maptool helps
+to copy the data from Lumix DVD to the SD card that is inserted into your
+computer (the camera has not to be connected).
+This script was tested with Lumix TZ41.
+"""
+
+from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
+
+import logging
+import sys
+logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s',
+                    level=logging.DEBUG,
+                    stream=sys.stdout)
+
+# lumixmaptool modules
+# Every lumixmaptool subcommand that should be available through
+#   lumixmaptool SUBCOMMAND
+# has to be added to ``get_parser()`` and to ``main``.
+import lumixmaptool
+from lumixmaptool import copy
+
+
+def get_parser():
+    """Return the parser object for this script."""
+    parser = ArgumentParser(description=__doc__,
+                            prog='lumixmaptool',
+                            formatter_class=ArgumentDefaultsHelpFormatter)
+    parser.add_argument('--version',
+                        action='version',
+                        version=('lumixmaptool %s' %
+                                 str(lumixmaptool.__version__)))
+    subparsers = parser.add_subparsers(dest='cmd')
+    subparsers.add_parser('copy',
+                          add_help=False,
+                          parents=[copy.get_parser()],
+                          help="Copy maps from CD to camera.")
+    return parser
+
+
+def main(args):
+    if args.cmd == 'copy':
+        copy.main(args.mapdata, args.path_to_sdcard, args.regions)
+    else:
+        logging.warning("Subcommand '%s' not implemented.", args.cmds)
+
+
+if __name__ == '__main__':
+    args = get_parser().parse_args()
+    main(args)

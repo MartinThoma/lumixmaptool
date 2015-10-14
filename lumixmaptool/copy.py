@@ -135,15 +135,15 @@ def copy_maps(path_to_mapdata, path_to_sdcard, regions):
             target_dir = mapdata_on_sdcard + "/" + subdir
             target_file = target_dir + "/" + filename
 
-            logging.info("abspath_to_source_file: %s" % abspath_to_source_file)
-            logging.info("target_dir: %s" % target_dir)
-            logging.info("target_file: %s" % target_file)
+            logging.debug("abspath_to_source_file: %s" % abspath_to_source_file)
+            logging.debug("target_dir: %s" % target_dir)
+            logging.debug("target_file: %s" % target_file)
 
             if not os.path.exists(target_dir):
                 os.mkdir(target_dir)
 
             if not os.path.exists(target_file):
-                shutil.copy(abspath_to_source_file, target_dir)
+                os.system("cp %s %s" % (abspath_to_source_file, target_dir))
         print("Copying region '%i' DONE" % selected_region_id)
     print("All operations exited succesfully.")
 
@@ -185,7 +185,8 @@ def get_parser():
                         dest="mapdata",
                         metavar="MAPDATA",
                         default=autodetect_mapdata(),
-                        help="path to MAPDATA folder on the Lumix DVD",
+                        help=("path to MAPDATA/MapList.dat file "
+                              "on the Lumix DVD"),
                         type=lambda x: is_valid_mapdata(parser, x))
     parser.add_argument("-s", "--sdcard",
                         dest="path_to_sdcard",

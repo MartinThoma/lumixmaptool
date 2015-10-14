@@ -28,7 +28,7 @@ config = {
         "pyparsing >= 2.0.1"
     ],
     'keywords': ['Lumix', 'Panasonic', 'TZ41', 'Camera', 'GPS'],
-    'download_url': 'https://github.com/MartinThoma/nntoolkit',
+    'download_url': 'https://github.com/MartinThoma/lumixmaptool',
     'classifiers': ['Development Status :: 3 - Alpha',
                     'Environment :: Console',
                     'Intended Audience :: End Users/Desktop',
